@@ -47,5 +47,46 @@ public class Project_Fahad_Hassan
       }
 
       inputFile.close();
+            int smokerCount = 0;
+      int nonSmokerCount = 0;
+
+      for (Policy policy : policies)
+      {
+         System.out.printf("\nPolicy Number: %d\n",
+                           policy.getPolicyNumber());
+         System.out.printf("\nProvider Name: %s\n",
+                           policy.getProviderName());
+         System.out.printf("\nPolicyholder's First Name: %s\n",
+                           policy.getFirstName());
+         System.out.printf("\nPolicyholder's Last Name: %s\n",
+                           policy.getLastName());
+         System.out.printf("\nPolicyholder's Age: %d\n",
+                           policy.getAge());
+         System.out.printf("\nPolicyholder's Smoking Status (smoker/non-smoker): %s\n",
+                           policy.getSmokingStatus());
+         System.out.printf("\nPolicyholder's Height: %.1f inches\n",
+                           policy.getHeight());
+         System.out.printf("\nPolicyholder's Weight: %.1f pounds\n",
+                           policy.getWeight());
+         System.out.printf("\nPolicyholder's BMI: %.2f\n",
+                           policy.calculateBMI());
+         System.out.printf("\nPolicy Price: $%.2f\n",
+                           policy.calculatePolicyPrice());
+
+         if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
+         {
+            smokerCount++;
+         }
+         else
+         {
+            nonSmokerCount++;
+         }
+      }
+
+      System.out.println("\nThe number of policies with a smoker is: "
+                         + smokerCount);
+
+      System.out.println("\nThe number of policies with a non-smoker is: "
+                         + nonSmokerCount);
    }
 }
