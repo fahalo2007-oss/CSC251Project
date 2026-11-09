@@ -78,6 +78,23 @@ public class Policy
     * Calculates the price of the insurance policy.
     */
    public double calculatePolicyPrice()
+   
+   /**
+    * Returns the policy information as a String.
+    */
+   public String toString()
+   {
+      String str = String.format(
+         "Policy Number: %d\n\n" +
+         "Provider Name: %s\n\n" +
+         "%s\n" +
+         "Policy Price: $%.2f\n",
+         policyNumber, providerName,
+         policyHolder.toString(), calculatePolicyPrice());
+
+      return str;
+   }
+
    {
       double price = 600.0;
 
