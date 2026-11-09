@@ -4,6 +4,7 @@ public class Policy
    private int policyNumber;
    private String providerName;
    private PolicyHolder policyHolder;
+   private static int policyCount = 0;
 
    /**
     * The default constructor sets all fields to default values.
@@ -24,6 +25,7 @@ public class Policy
       this.policyNumber = policyNumber;
       this.providerName = providerName;
       this.policyHolder = new PolicyHolder(policyHolder);
+      policyCount++;
    }
 
    /**
@@ -116,5 +118,12 @@ public class Policy
       }
 
       return price;
+         /**
+    * Returns the number of Policy objects created.
+    */
+   public static int getPolicyCount()
+   {
+      return policyCount;
+   }
    }
 }
