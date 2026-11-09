@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -31,9 +32,14 @@ public class Project_Fahad_Hassan
          double height = Double.parseDouble(inputFile.nextLine());
          double weight = Double.parseDouble(inputFile.nextLine());
 
-         Policy policy = new Policy(policyNumber, providerName, firstName,
-                                    lastName, age, smokingStatus,
-                                    height, weight);
+         // Create a PolicyHolder object
+         PolicyHolder policyHolder = new PolicyHolder(
+                                    firstName, lastName, age,
+                                    smokingStatus, height, weight);
+
+         // Create a Policy object with a PolicyHolder
+         Policy policy = new Policy(policyNumber, providerName,
+                                    policyHolder);
 
          policies.add(policy);
       }
@@ -45,37 +51,12 @@ public class Project_Fahad_Hassan
 
       for (Policy policy : policies)
       {
-         System.out.printf("Policy Number: %d\n",
-                           policy.getPolicyNumber());
+         // Implicitly calls the Policy toString method
+         System.out.println(policy);
 
-         System.out.printf("\nProvider Name: %s\n",
-                           policy.getProviderName());
+         PolicyHolder policyHolder = policy.getPolicyHolder();
 
-         System.out.printf("\nPolicyholder's First Name: %s\n",
-                           policy.getFirstName());
-
-         System.out.printf("\nPolicyholder's Last Name: %s\n",
-                           policy.getLastName());
-
-         System.out.printf("\nPolicyholder's Age: %d\n",
-                           policy.getAge());
-
-         System.out.printf("\nPolicyholder's Smoking Status (smoker/non-smoker): %s\n",
-                           policy.getSmokingStatus());
-
-         System.out.printf("\nPolicyholder's Height: %.1f inches\n",
-                           policy.getHeight());
-
-         System.out.printf("\nPolicyholder's Weight: %.1f pounds\n",
-                           policy.getWeight());
-
-         System.out.printf("\nPolicyholder's BMI: %.2f\n",
-                           policy.calculateBMI());
-
-         System.out.printf("\nPolicy Price: $%.2f\n\n",
-                           policy.calculatePolicyPrice());
-
-         if (policy.getSmokingStatus().equalsIgnoreCase("smoker"))
+         if (policyHolder.getSmokingStatus().equalsIgnoreCase("smoker"))
          {
             smokerCount++;
          }
@@ -85,10 +66,17 @@ public class Project_Fahad_Hassan
          }
       }
 
+      System.out.println("There were " + Policy.getPolicyCount()
+                         + " Policy objects created.");
+
+      System.out.println();
+
       System.out.println("The number of policies with a smoker is: "
                          + smokerCount);
 
-      System.out.println("\nThe number of policies with a non-smoker is: "
+      System.out.println();
+
+      System.out.println("The number of policies with a non-smoker is: "
                          + nonSmokerCount);
    }
 }
